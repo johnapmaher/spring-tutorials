@@ -1,20 +1,33 @@
-import java.util.HashSet;
+package com.jmaher.buildingRESTserviceswithspring;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Account {
+    @JsonIgnore
+    public String password;
+    public String username;
     @OneToMany(mappedBy = "account")
     private Set<Bookmark> bookmarks = new HashSet<>();
-
     @Id
     @GeneratedValue
     private Long id;
+
+    public Account(String name, String password) {
+        this.username = name;
+        this.password = password;
+    }
+
+    Account() {
+
+    }
 
     public Set<Bookmark> getBookmarks() {
         return bookmarks;
@@ -30,18 +43,5 @@ public class Account {
 
     public String getUsername() {
         return username;
-    }
-
-    @JsonIgnore
-    public String password;
-    public String username;
-
-    public Account(String name, String password) {
-        this.username = name;
-        this.password = password;
-    }
-
-    Account() {
-        
     }
 }

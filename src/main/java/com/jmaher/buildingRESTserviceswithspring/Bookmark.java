@@ -1,19 +1,20 @@
-package buildingRESTserviceswithSpring
+package com.jmaher.buildingRESTserviceswithspring;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Bookmark {
 
+    public String uri;
+    public String description;
     @JsonIgnore
     @ManyToOne
     private Account account;
-
     @Id
     @GeneratedValue
     private Long id;
@@ -21,15 +22,11 @@ public class Bookmark {
     Bookmark() {
 
     }
-
     public Bookmark(Account account, String uri, String description) {
         this.uri = uri;
         this.description = description ;
         this.account = account;
     }
-
-    public String uri;
-    public String description;
 
     public Account getAccount() {
         return account;

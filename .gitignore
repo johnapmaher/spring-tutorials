@@ -16,10 +16,6 @@
 *.iml
 *.ipr
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+bin/templates/
+src/main/resources/static/
+src/main/resources/templates/
